@@ -1,4 +1,5 @@
 package bl.com.userregistration;
+
 import java.util.Scanner;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -18,6 +19,9 @@ public class UserRegistration {
 
 		System.out.println("Enter Last Name :");
 		validateName(getUserInput());
+		
+		System.out.println("\nEnter Email Id : ");
+		validateEmail(getUserInput());
 
 	}
 
@@ -25,6 +29,21 @@ public class UserRegistration {
 		Scanner sc = new Scanner(System.in);
 		return sc.nextLine();
 	}
+	
+public void validateEmail(String input) {
+		
+		String email = "^[0-9a-zA-Z]+([_+-.a-z0-9A-Z]+)*[@][a-zA-Z]+[.][a-z]{2,4}([.][a-z]{2})?$";
+		
+		System.out.println("\nValidating Email...");
+		match(email, input);
+	}
+
+public void match(String regex, String input) {
+	Pattern pattern = Pattern.compile(regex);
+	Matcher match = pattern.matcher(input);
+	
+	printResult(match.matches(), input);
+}
 
 	public void validateName(String input) {
 
