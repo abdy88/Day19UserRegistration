@@ -1,5 +1,6 @@
 package bl.com.userregistration;
 
+
 import java.util.Scanner;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -37,7 +38,7 @@ public class UserRegistration {
 	}
 	
 	private void validatePassword(String input) {
-		String password = "^(?=.*[A-Z])[0-9a-zA-Z]{8,}$";
+		String password = "^(?=.*[A-Z])(?=.*[0-9])[0-9a-zA-Z]{8,}$";
 		
 		System.out.println("\nValidating Password...");
 		match(password, input);
