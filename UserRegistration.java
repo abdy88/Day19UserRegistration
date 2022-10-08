@@ -25,12 +25,22 @@ public class UserRegistration {
 
 		System.out.println("\nEnter Mobile Number : ");
 		validateMobileNumber(getUserInput());
+		
+		System.out.println("\nEnter Password : ");
+		validatePassword(getUserInput());
 
 	}
 
 	public String getUserInput() {
 		Scanner sc = new Scanner(System.in);
 		return sc.nextLine();
+	}
+	
+	private void validatePassword(String input) {
+		String password = "[0-9a-zA-Z]{8,}";
+		
+		System.out.println("\nValidating Password...");
+		match(password, input);
 	}
 
 	public void validateMobileNumber(String input) {
