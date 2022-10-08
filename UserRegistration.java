@@ -19,9 +19,12 @@ public class UserRegistration {
 
 		System.out.println("Enter Last Name :");
 		validateName(getUserInput());
-		
+
 		System.out.println("\nEnter Email Id : ");
 		validateEmail(getUserInput());
+
+		System.out.println("\nEnter Mobile Number : ");
+		validateMobileNumber(getUserInput());
 
 	}
 
@@ -29,21 +32,22 @@ public class UserRegistration {
 		Scanner sc = new Scanner(System.in);
 		return sc.nextLine();
 	}
-	
-public void validateEmail(String input) {
-		
+
+	public void validateMobileNumber(String input) {
+
+		String mobile = "^[0-9]{2}\\s[0-9]{10}$";
+
+		System.out.println("\nValidating Mobile Number...");
+		match(mobile, input);
+	}
+
+	public void validateEmail(String input) {
+
 		String email = "^[0-9a-zA-Z]+([_+-.a-z0-9A-Z]+)*[@][a-zA-Z]+[.][a-z]{2,4}([.][a-z]{2})?$";
-		
+
 		System.out.println("\nValidating Email...");
 		match(email, input);
 	}
-
-public void match(String regex, String input) {
-	Pattern pattern = Pattern.compile(regex);
-	Matcher match = pattern.matcher(input);
-	
-	printResult(match.matches(), input);
-}
 
 	public void validateName(String input) {
 
@@ -55,6 +59,13 @@ public void match(String regex, String input) {
 		System.out.println("Validating Name...");
 		printResult(match.matches(), input);
 
+	}
+
+	public void match(String regex, String input) {
+		Pattern pattern = Pattern.compile(regex);
+		Matcher match = pattern.matcher(input);
+
+		printResult(match.matches(), input);
 	}
 
 	public void printResult(boolean isOk, String input) {
